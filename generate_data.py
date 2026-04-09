@@ -53,7 +53,7 @@ lines = [
     ''
 ]
 
-with open('D:/Desktop/AED引导网页开发/网页/data.js', 'w', encoding='utf-8') as f:
+with open('D:/Desktop/AED引导网页开发/data.js', 'w', encoding='utf-8') as f:
     f.write('\n'.join(lines))
 
 print('File saved successfully!')

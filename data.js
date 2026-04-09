@@ -898,59 +898,37 @@ const aedData = {
                 "name": "体育场",
                 "hasAED": true,
                 "description": "从操场方向进入主席台下方的房间，AED在右侧墙上",
-                "images": [
-                    "1.jpg",
-                    "2.jpg",
-                    "3.jpg"
-                ]
+                "images": []
             },
             {
                 "name": "体育馆",
                 "hasAED": true,
                 "description": "从正门进入楼宇并通过闸机后，AED在右侧墙上",
-                "images": [
-                    "1.jpg",
-                    "2.jpg"
-                ]
+                "images": []
             },
             {
                 "name": "学生食堂",
                 "hasAED": true,
                 "description": "从A区一楼正门进入后右转，绕过扶梯后在右侧的墙上",
-                "images": [
-                    "1.jpg",
-                    "2.jpg",
-                    "3.jpg"
-                ]
+                "images": []
             },
             {
                 "name": "师生活动中心",
                 "hasAED": true,
                 "description": "从正门进入楼宇后左转，AED在服务台正后方的墙上",
-                "images": [
-                    "1.jpg",
-                    "2.jpg"
-                ]
+                "images": []
             },
             {
                 "name": "人才公寓",
                 "hasAED": true,
                 "description": "从正门进入楼宇并通过闸机后，AED在正面的墙上",
-                "images": [
-                    "1.jpg",
-                    "2.jpg"
-                ]
+                "images": []
             },
             {
                 "name": "教工食堂",
                 "hasAED": true,
                 "description": "从正门进入楼宇后上二楼，进右侧门，左前方可见。注：教工食堂已废弃，此AED需要通过两道上锁的门，建议转移。",
-                "images": [
-                    "1.jpg",
-                    "2.jpg",
-                    "3.jpg",
-                    "4.jpg"
-                ]
+                "images": []
             },
             {
                 "name": "行政服务中心",
@@ -963,11 +941,7 @@ const aedData = {
                 "name": "图书教育中心",
                 "hasAED": true,
                 "description": "从正门进入楼宇后左转，AED在服务台后左侧的墙上。剩下两个AED分别在图书教育中心B,C区服务台的右后方。",
-                "images": [
-                    "1.jpg",
-                    "2.jpg",
-                    "3.jpg"
-                ]
+                "images": []
             },
             {
                 "name": "3号学科楼",
@@ -994,11 +968,7 @@ const aedData = {
                 "name": "信智楼",
                 "hasAED": true,
                 "description": "从正门进入楼宇后左转，AED在电梯左侧的墙上。剩下两个AED分别在A,C区的车库中",
-                "images": [
-                    "1.jpg",
-                    "2.jpg",
-                    "3.jpg"
-                ]
+                "images": []
             }
         ]
     }
@@ -1006,7 +976,7 @@ const aedData = {
 
 // 校区配置
 const campusConfig = {
-    imageBasePath: "../照片",
+    imageBasePath: "照片",
     emergencyPhone: "120",
     campusEmergencyPhone: ""
 };
