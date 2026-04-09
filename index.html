@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>中科大AED急救引导</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            max-width: 480px;
+            margin: 0 auto;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .header {
+            text-align: center;
+            padding: 30px 0;
+            color: white;
+        }
+
+        .header h1 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .header p {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .emergency-banner {
+            background: linear-gradient(135deg, #ff416c 0%, #ff4b2b 100%);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(255, 65, 108, 0.3);
+        }
+
+        .emergency-banner .phone {
+            font-size: 32px;
+            font-weight: 700;
+            margin: 5px 0;
+        }
+
+        .card {
+            background: white;
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .card-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #333;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card-title .icon {
+            font-size: 24px;
+        }
+
+        .campus-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .campus-item {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ec 100%);
+            border-radius: 12px;
+            padding: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 2px solid transparent;
+        }
+
+        .campus-item:hover, .campus-item:active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .campus-item .name {
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .campus-item .arrow {
+            font-size: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .campus-item:hover .arrow {
+            transform: translateX(5px);
+        }
+
+        .building-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .building-item {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 16px 20px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-left: 4px solid #ddd;
+        }
+
+        .building-item.has-aed {
+            border-left-color: #28a745;
+            background: linear-gradient(90deg, #e8f5e9 0%, #f8f9fa 100%);
+        }
+
+        .building-item.no-aed {
+            border-left-color: #ffc107;
+            background: linear-gradient(90deg, #fff8e1 0%, #f8f9fa 100%);
+        }
+
+        .building-item:hover {
+            background: #e9ecef;
+            transform: translateX(5px);
+        }
+
+        .building-item .info {
+            flex: 1;
+        }
+
+        .building-item .name {
+            font-size: 16px;
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+
+        .building-item .status {
+            font-size: 12px;
+            padding: 2px 8px;
+            border-radius: 12px;
+            display: inline-block;
+        }
+
+        .building-item .status.has {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .building-item .status.none {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .building-item .arrow {
+            color: #999;
+            font-size: 18px;
+        }
+
+        .back-btn {
+            background: transparent;
+            border: 2px solid rgba(255,255,255,0.5);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .back-btn:hover {
+            background: rgba(255,255,255,0.2);
+            border-color: white;
+        }
+
+        .guide-section {
+            margin-bottom: 20px;
+        }
+
+        .guide-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #333;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .guide-content {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 16px;
+            font-size: 15px;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        .guide-content.highlight {
+            background: linear-gradient(135deg, #ffebee 0%, #fff3e0 100%);
+            border: 2px solid #ff7043;
+        }
+
+        .image-gallery {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .image-item {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .image-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .image-item .step-number {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 8px 16px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .no-image-placeholder {
+            background: #e9ecef;
+            padding: 40px 20px;
+            text-align: center;
+            border-radius: 12px;
+            color: #6c757d;
+        }
+
+        .aed-status {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .aed-status.has {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .aed-status.none {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .aed-status .icon {
+            font-size: 24px;
+            margin-right: 10px;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .fade-in {
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+        }
+
+        .loading-spinner {
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #667eea;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* 适配横屏 */
+        @media (orientation: landscape) {
+            .container {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 紧急联系横幅 -->
+        <div class="emergency-banner">
+            <div>紧急情况请立即拨打</div>
+            <div class="phone">120</div>
+        </div>
+
+        <!-- 校区选择页面 -->
+        <div id="campus-page" class="page fade-in">
+            <div class="header">
+                <h1>🏥 AED急救引导</h1>
+                <p>中国科学技术大学</p>
+            </div>
+            <div class="card">
+                <div class="card-title">
+                    <span class="icon">📍</span>
+                    请选择所在校区
+                </div>
+                <div class="campus-list" id="campus-list">
+                    <!-- 动态生成 -->
+                </div>
+            </div>
+        </div>
+
+        <!-- 楼宇选择页面 -->
+        <div id="building-page" class="page hidden">
+            <button class="back-btn" onclick="showCampusPage()">
+                ← 返回校区选择
+            </button>
+            <div class="card">
+                <div class="card-title">
+                    <span class="icon">🏢</span>
+                    <span id="current-campus-name">请选择楼宇</span>
+                </div>
+                <div class="building-list" id="building-list">
+                    <!-- 动态生成 -->
+                </div>
+            </div>
+        </div>
+
+        <!-- AED引导详情页面 -->
+        <div id="guide-page" class="page hidden">
+            <button class="back-btn" onclick="showBuildingPage()">
+                ← 返回楼宇选择
+            </button>
+            <div id="guide-content">
+                <!-- 动态生成 -->
+            </div>
+        </div>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
