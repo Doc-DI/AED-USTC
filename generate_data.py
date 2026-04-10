@@ -46,7 +46,7 @@ lines = [
     '',
     '// 校区配置',
     'const campusConfig = {',
-    '    imageBasePath: "../照片",',
+    '    imageBasePath: "照片",',
     '    emergencyPhone: "120",',
     '    campusEmergencyPhone: ""',
     '};',
